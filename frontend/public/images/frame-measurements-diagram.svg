@@ -1,0 +1,43 @@
+<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left lens -->
+  <ellipse cx="150" cy="100" rx="80" ry="50" fill="none" stroke="#000" stroke-width="2"/>
+  
+  <!-- Right lens -->
+  <ellipse cx="350" cy="100" rx="80" ry="50" fill="none" stroke="#000" stroke-width="2"/>
+  
+  <!-- Bridge -->
+  <line x1="230" y1="100" x2="270" y2="100" stroke="#000" stroke-width="2"/>
+  
+  <!-- Temple arms -->
+  <line x1="70" y1="100" x2="20" y2="120" stroke="#000" stroke-width="2"/>
+  <line x1="430" y1="100" x2="480" y2="120" stroke="#000" stroke-width="2"/>
+  
+  <!-- Labels -->
+  <!-- Lens width -->
+  <line x1="70" y1="170" x2="230" y2="170" stroke="#333" stroke-width="1"/>
+  <line x1="70" y1="165" x2="70" y2="175" stroke="#333" stroke-width="1"/>
+  <line x1="230" y1="165" x2="230" y2="175" stroke="#333" stroke-width="1"/>
+  <text x="150" y="190" font-family="Arial" font-size="12" text-anchor="middle">A: Lens Width</text>
+  
+  <!-- Bridge width -->
+  <line x1="230" y1="80" x2="270" y2="80" stroke="#333" stroke-width="1"/>
+  <line x1="230" y1="75" x2="230" y2="85" stroke="#333" stroke-width="1"/>
+  <line x1="270" y1="75" x2="270" y2="85" stroke="#333" stroke-width="1"/>
+  <text x="250" y="70" font-family="Arial" font-size="12" text-anchor="middle">B: Bridge</text>
+  
+  <!-- Temple length -->
+  <line x1="430" y1="120" x2="480" y2="120" stroke="#333" stroke-width="1"/>
+  <text x="455" y="140" font-family="Arial" font-size="12" text-anchor="middle">C: Temple</text>
+  
+  <!-- Lens height -->
+  <line x1="380" y1="50" x2="380" y2="150" stroke="#333" stroke-width="1"/>
+  <line x1="375" y1="50" x2="385" y2="50" stroke="#333" stroke-width="1"/>
+  <line x1="375" y1="150" x2="385" y2="150" stroke="#333" stroke-width="1"/>
+  <text x="400" y="100" font-family="Arial" font-size="12" text-anchor="middle">D: Height</text>
+  
+  <!-- Total width -->
+  <line x1="70" y1="30" x2="430" y2="30" stroke="#333" stroke-width="1"/>
+  <line x1="70" y1="25" x2="70" y2="35" stroke="#333" stroke-width="1"/>
+  <line x1="430" y1="25" x2="430" y2="35" stroke="#333" stroke-width="1"/>
+  <text x="250" y="20" font-family="Arial" font-size="12" text-anchor="middle">E: Total Width</text>
+</svg>

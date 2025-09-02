@@ -1,0 +1,44 @@
+# Node dependencies
+node_modules/
+
+# Build artifacts
+dist/
+frontend/dist/
+admin/dist/
+coverage/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment files (keep examples)
+.env
+.env.*
+**/.env
+**/.env.*
+!*.example
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Platform folders
+.vercel/
+.render/
+
+# Uploads and runtime files (preserve placeholder)
+backend/uploads/**
+!backend/uploads/.gitkeep
+
+# Cache
+.cache/
+**/.cache/
+node_modules
+.*env

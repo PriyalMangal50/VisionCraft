@@ -1,0 +1,89 @@
+/* 
+ * This file uses Tailwind CSS directives
+ * VS Code may show warnings about @tailwind and @apply directives
+ * These are not errors - they are valid Tailwind CSS syntax
+ * The project is configured to use Tailwind CSS correctly
+ */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Outfit:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  font-family: Outfit;
+}
+
+select, input, textarea{
+  border: 1px solid #c2c2c2;
+  outline-color: rgb(59, 130, 246);
+  border-radius: 4px;
+}
+
+/* Sidebar NavLink active state */
+.active{
+  background-color:#EFF6FF;
+  border-color: #3B82F6;
+  color: #2563EB;
+}
+
+/* Admin Panel Specific Styles */
+
+/* Table styles */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.admin-table th {
+  background-color: #f9fafb;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: #4b5563;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #1f2937;
+}
+
+.admin-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.status-shipped {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+}
+
+.status-delivered {
+  background-color: #D1FAE5;
+  color: #065F46;
+}
+
+.status-cancelled {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
