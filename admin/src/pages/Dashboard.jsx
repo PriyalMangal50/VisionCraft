@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { backendUrl, currency } from "../App";
+import { currency } from "../App";
 import { Link } from "react-router-dom";
+import api from "../api/http";
 
 // Icons for dashboard
 const IconBox = ({ icon, bgColor }) => (
@@ -31,29 +32,10 @@ const Dashboard = ({ token }) => {
         setLoading(true);
         
         // Get products stats
-        const productsResponse = await fetch(`${backendUrl}/api/products/stats`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            token: `Bearer ${token}`,
-          },
-        });
-        
-        // Get orders stats
-        const ordersResponse = await fetch(`${backendUrl}/api/orders/stats`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            token: `Bearer ${token}`,
-          },
-        });
-        
-        if (!productsResponse.ok || !ordersResponse.ok) {
-          throw new Error("Failed to fetch dashboard data");
-        }
-        
-        const productsData = await productsResponse.json();
-        const ordersData = await ordersResponse.json();
+        const [{ data: productsData }, { data: ordersData }] = await Promise.all([
+          api.get(`/api/products/stats`),
+          api.get(`/api/orders/stats`)
+        ]);
         
         setStats({
           totalProducts: productsData.totalProducts || 0,

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { backendUrl } from "../App";
+import api from "../api/http";
 import { toast } from "react-toastify";
 
 const ImportProducts = ({ token }) => {
@@ -70,13 +69,12 @@ const ImportProducts = ({ token }) => {
       
       // Start import
       console.log("Starting import with token:", token);
-      const response = await axios.post(
-        `${backendUrl}/api/import/products`,
+      const response = await api.post(
+        `/api/import/products`,
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
-            token: `Bearer ${token}`
+            'Content-Type': 'multipart/form-data'
           }
         }
       );
@@ -101,11 +99,8 @@ const ImportProducts = ({ token }) => {
   const fetchUploadedFiles = async () => {
     try {
       setLoadingFiles(true);
-      const response = await axios.get(
-        `${backendUrl}/api/import/files`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.get(
+        `/api/import/files`
       );
       
       if (response.data.success) {
@@ -128,11 +123,8 @@ const ImportProducts = ({ token }) => {
     }
     
     try {
-      const response = await axios.delete(
-        `${backendUrl}/api/import/files/${filename}`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.delete(
+        `/api/import/files/${filename}`
       );
       
       if (response.data.success) {
@@ -151,11 +143,8 @@ const ImportProducts = ({ token }) => {
   const fetchImageFolders = async () => {
     try {
       setLoadingFolders(true);
-      const response = await axios.get(
-        `${backendUrl}/api/import/images`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.get(
+        `/api/import/images`
       );
       
       if (response.data.success) {
@@ -178,11 +167,8 @@ const ImportProducts = ({ token }) => {
     }
     
     try {
-      const response = await axios.delete(
-        `${backendUrl}/api/import/images/${folderName}`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.delete(
+        `/api/import/images/${folderName}`
       );
       
       if (response.data.success) {
@@ -203,11 +189,8 @@ const ImportProducts = ({ token }) => {
     
     setLoadingBatches(true);
     try {
-      const response = await axios.get(
-        `${backendUrl}/api/import/batches`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.get(
+        `/api/import/batches`
       );
       
       if (response.data.success) {
@@ -230,11 +213,8 @@ const ImportProducts = ({ token }) => {
     }
     
     try {
-      const response = await axios.delete(
-        `${backendUrl}/api/import/batch/${batchId}`,
-        {
-          headers: { token: `Bearer ${token}` }
-        }
+      const response = await api.delete(
+        `/api/import/batch/${batchId}`
       );
       
       if (response.data.success) {
@@ -277,11 +257,8 @@ const ImportProducts = ({ token }) => {
     if (statusPolling) {
       interval = setInterval(async () => {
         try {
-          const response = await axios.get(
-            `${backendUrl}/api/import/status`,
-            {
-              headers: { token: `Bearer ${token}` }
-            }
+          const response = await api.get(
+            `/api/import/status`
           );
           
           setImportStatus(response.data.status);

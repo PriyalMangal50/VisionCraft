@@ -1,6 +1,5 @@
-import axios from "axios";
+import api from "../api/http";
 import React, { useEffect, useState } from "react";
-import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
 const ListFAQ = ({ token }) => {
@@ -16,7 +15,7 @@ const ListFAQ = ({ token }) => {
 
   const fetchList = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/api/faq/list`);
+  const response = await api.get(`/api/faq/list`);
 
       if (response.data.success) {
         setList(response.data.faqs);
@@ -31,10 +30,9 @@ const ListFAQ = ({ token }) => {
 
   const removeFAQ = async (id) => {
     try {
-      const response = await axios.post(
-        `${backendUrl}/api/faq/remove`,
-        { id },
-        { headers: { token } }
+      const response = await api.post(
+        `/api/faq/remove`,
+        { id }
       );
 
       if (response.data.success) {
@@ -51,10 +49,9 @@ const ListFAQ = ({ token }) => {
 
   const updateFAQ = async (id) => {
     try {
-      const response = await axios.post(
-        `${backendUrl}/api/faq/update`,
-        { id, ...editForm },
-        { headers: { token } }
+      const response = await api.post(
+        `/api/faq/update`,
+        { id, ...editForm }
       );
 
       if (response.data.success) {

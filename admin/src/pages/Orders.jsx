@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { backendUrl,currency} from "../App";
+import api from "../api/http";
+import { currency} from "../App";
 import { assets } from "../assets/assets";
 import { toast } from "react-toastify";
 
@@ -15,7 +15,7 @@ const Orders = ({ token }) => {
     }
 
     try {
-      const res = await axios.post(backendUrl +"/api/order/list",{}, {headers: { token }});
+  const res = await api.post(`/api/order/list`,{});
       
       if (res.data.success) {
         setOrders(res.data.orders.reverse());
@@ -30,7 +30,7 @@ const Orders = ({ token }) => {
 
   const handleStatus = async (e, orderId) => {
     try {
-      const res = await axios.post(backendUrl + "/api/order/status",{ orderId, status: e.target.value },{ headers: { token } });
+  const res = await api.post(`/api/order/status`,{ orderId, status: e.target.value });
 
       if (res.data.success) {
         await fetchAllOrders();

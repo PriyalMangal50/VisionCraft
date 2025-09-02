@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
-import { backendUrl } from "../App";
+import api from "../api/http";
 
 const Navbar = ({ setToken }) => {
   const [admin, setAdmin] = useState({});
@@ -11,16 +11,8 @@ const Navbar = ({ setToken }) => {
     // Fetch admin profile data
     const fetchAdminProfile = async () => {
       try {
-        const response = await fetch(`${backendUrl}/api/admin/profile`, {
-          headers: {
-            token: `Bearer ${token}`
-          }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setAdmin(data);
-        }
+        const { data } = await api.get(`/api/admin/profile`);
+        setAdmin(data);
       } catch (error) {
         console.error("Error fetching admin profile:", error);
       }

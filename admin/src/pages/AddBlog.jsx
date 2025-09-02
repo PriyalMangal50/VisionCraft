@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
-import axios from "axios";
-import { backendUrl } from "../App";
+import api from "../api/http";
 import { toast } from "react-toastify";
 
 const AddBlog = ({ token }) => {
@@ -43,7 +42,7 @@ const AddBlog = ({ token }) => {
       formData.append("readTime", readTime);
       formData.append("publishDate", publishDate);
 
-      const response = await axios.post(backendUrl + "/api/blog/add", formData, { headers: { token } });
+  const response = await api.post(`/api/blog/add`, formData);
       
       if (response.data.success) {
         toast.success(response.data.message);

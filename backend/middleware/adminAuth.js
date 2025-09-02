@@ -11,7 +11,12 @@ const adminAuth = async (req, res, next) => {
     let tokenSource = 'none';
     
     if (req.headers.token) {
-      token = req.headers.token;
+      // Support either raw token or 'Bearer <token>' in custom token header
+      let raw = req.headers.token;
+      if (typeof raw === 'string' && raw.startsWith('Bearer ')) {
+        raw = raw.slice(7);
+      }
+      token = raw;
       tokenSource = 'token header';
     } else if (req.headers.authorization) {
       if (req.headers.authorization.startsWith('Bearer ')) {

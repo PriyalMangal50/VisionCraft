@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { backendUrl } from '../App';
+import api from '../api/http';
 import { FACE_SHAPES, USAGE_OPTIONS, FEATURE_OPTIONS } from '../utils/quizConstants';
 
 const QuizProductEditor = ({ token }) => {
@@ -31,8 +31,7 @@ const QuizProductEditor = ({ token }) => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${backendUrl}/api/product/list`);
-      const data = await response.json();
+  const { data } = await api.get(`/api/product/list`);
       
       if (data.success) {
         setProducts(data.products);
@@ -49,19 +48,10 @@ const QuizProductEditor = ({ token }) => {
 
   const updateProductQuizAttributes = async (productId, updates) => {
     try {
-      const response = await fetch(`${backendUrl}/api/product/update`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          token: token
-        },
-        body: JSON.stringify({
-          productId,
-          updates
-        })
+      const { data } = await api.post(`/api/product/update`, {
+        productId,
+        updates
       });
-      
-      const data = await response.json();
       
       if (data.success) {
         toast.success('Product updated successfully');

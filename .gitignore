@@ -37,6 +37,10 @@ Thumbs.db
 backend/uploads/**
 !backend/uploads/.gitkeep
 
+# Local helper scripts (not required for deployment)
+**/test-*.bat
+**/*test*.bat
+
 # Cache
 .cache/
 **/.cache/

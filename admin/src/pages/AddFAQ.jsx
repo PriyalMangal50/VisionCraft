@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { backendUrl } from "../App";
+import api from "../api/http";
 import { toast } from "react-toastify";
 
 const AddFAQ = ({ token }) => {
@@ -22,10 +21,9 @@ const AddFAQ = ({ token }) => {
         order: Number(order),
       };
 
-      const response = await axios.post(
-        backendUrl + "/api/faq/add",
-        formData,
-        { headers: { token } }
+      const response = await api.post(
+        `/api/faq/add`,
+        formData
       );
 
       if (response.data.success) {

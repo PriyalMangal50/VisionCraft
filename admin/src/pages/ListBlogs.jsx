@@ -1,6 +1,5 @@
-import axios from "axios";
+import api from "../api/http";
 import React, { useEffect, useState } from "react";
-import { backendUrl } from "../App";
 import { toast } from "react-toastify";
 
 const ListBlogs = ({ token }) => {
@@ -21,9 +20,7 @@ const ListBlogs = ({ token }) => {
       console.log("Fetching blogs with token:", token ? "Token available" : "No token");
       console.log("Backend URL:", backendUrl);
       
-      const response = await axios.get(`${backendUrl}/api/blog/list`, {
-        headers: { token },
-      });
+  const response = await api.get(`/api/blog/list`);
 
       console.log("Blog fetch response:", response.data);
 
@@ -43,10 +40,9 @@ const ListBlogs = ({ token }) => {
 
   const removeBlog = async (id) => {
     try {
-      const response = await axios.post(
-        `${backendUrl}/api/blog/remove`,
-        { id },
-        { headers: { token } }
+      const response = await api.post(
+        `/api/blog/remove`,
+        { id }
       );
 
       if (response.data.success) {
@@ -63,10 +59,9 @@ const ListBlogs = ({ token }) => {
 
   const updateBlog = async (id) => {
     try {
-      const response = await axios.post(
-        `${backendUrl}/api/blog/update`,
-        { id, ...editForm },
-        { headers: { token } }
+      const response = await api.post(
+        `/api/blog/update`,
+        { id, ...editForm }
       );
 
       if (response.data.success) {

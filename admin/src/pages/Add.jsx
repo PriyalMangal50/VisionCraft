@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets";
-import axios from "axios";
-import { backendUrl } from "../App";
+import api from "../api/http";
 import { toast } from "react-toastify";
 
 
@@ -212,7 +211,7 @@ const Add = ({ token }) => {
       formData.append("bestseller", bestseller);
       formData.append("sizes", JSON.stringify(sizes));
 
-      const response = await axios.post(backendUrl + "/api/product/add", formData, { headers: { token } })
+  const response = await api.post("/api/product/add", formData)
       if (response.data.success) {
         toast.success(response.data.message)
         setName('')
