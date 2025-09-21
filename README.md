@@ -104,7 +104,7 @@ CLOUDINARY_API_SECRET=your-api-secret
 STRIPE_SECRET_KEY=your-stripe-secret
 
 
-4️⃣ Run the development servers
+Run the development servers
 
 Backend:
 
@@ -128,8 +128,6 @@ npm start
 Admin uploads an XLSX file containing product data.
 
 System checks if product images are available.
-
-If missing → uses Google Custom Search API to fetch 4 relevant images (front, side, box, etc.).
 
 Images are downloaded or uploaded to Cloudinary.
 
