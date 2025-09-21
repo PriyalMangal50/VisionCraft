@@ -1,5 +1,3 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/915169ef-440b-4b10-8e0d-d1ffd227ff32" /># 👓 VisionCraft
-
 VisionCraft is a full-stack e-commerce platform for eyewear (eyeglasses, sunglasses, and contact lenses).  
 Built using the **MERN stack**, it provides a seamless shopping experience with advanced features like bulk product import, AI-assisted image handling, and an intuitive admin dashboard.  
 
